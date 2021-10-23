@@ -3,4 +3,4 @@ Using regression to predict flight fare
 
 
 ## Deployment Link
-### Click ![Here](https://flight-fare-prediction-an.herokuapp.com/)
+### Click [Here](https://flight-fare-prediction-an.herokuapp.com/)

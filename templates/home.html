@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<title>Home</title>
+
+<style>
+    body{
+        background-image:url('static/back1.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .hd{
+        text-decoration: none;
+        color: white;
+        font-size:24px;
+        font-weight:bold;
+        margin-top: 10px;
+    }
+
+.block{
+      border-radius: 5px;
+      margin: 20px;
+      display: inline-block;
+      
+    }
+
+        .l1 {
+        position: relative;
+        top: 5px;
+        color: #ffffff;
+        padding: 10px;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 20px;
+        display: inline-block;
+    }
+
+     .l2 {
+        position: relative;
+        top: 5px;
+        color: #ffffff;
+        padding: 10px;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+    select{
+        background-image: linear-gradient(90deg, #8fa7f5 10%, #e8a8fc 70%,#a0f5f8 100%);
+    }
+
+    select:hover{
+        background-image: linear-gradient(-90deg, #eb81dc 10%, #74d4e7 70%,#6ce6d5 100%);
+    }
+
+        .divs {
+        margin: 10px;
+    }
+
+     button {
+        background-image: linear-gradient(90deg, #567eff 10%, #d862fc 70%,#6ffaff 100%);
+        width: 150px;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background-image: linear-gradient(-90deg, #e42ccb 10%, #00d4ff 70%,#16bea8 100%);
+        width: 170px;
+    }
+
+    .pre{
+        font-size: 21px;
+        font-weight: bold;
+        color: white;
+    }
+
+</style>
+
+<body>
+    <div class="hd">
+        <center>
+            <h2>FLIGHT FARE PREDICTION</h2>
+        </center>
+    </div>
+
+        <center>
+            <div class="block">
+
+                <form action="home" method="post" autocomplete="off">
+                    <div class="divs">
+                        <div>
+                            <label for="airline" class="l1">Airline</label>
+                            <select id="airline" name="airline">
+                                {% for i in range(0,airlines|length) %}
+                                <option value={{airlines[i]}}>{{airlines[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <label for="source" class="l1">Source</label>
+                            <select id="source" name="source">
+                                {% for i in range(0,sources|length) %}
+                                <option value={{sources[i]}}>{{sources[i]}}</option>
+                                {% endfor %}
+                            </select>
+
+                            <label for="dest" class="l1">Destination</label>
+                            <select id="dest" name="dest">
+                                {% for i in range(0,dests|length) %}
+                                <option value={{dests[i]}}>{{dests[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="divs">
+                        <div>
+                            <label for="stop" class="l1">No Of Stops</label>
+                            <select id="stop" name="stop">
+                                {% for i in range(0,stops|length) %}
+                                <option value={{stops[i]}}>{{stops[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        
+                            <label for="addinfo" class="l1">Additional Info</label>
+                            <select id="addinfo" name="addinfo">
+                                {% for i in range(0,addinfos|length) %}
+                                <option value={{i}}>{{addinfos[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="divs">
+                        <div>
+                            <label for="Duration" class="l1">Duration</label>
+                        </div>
+                        <div>
+                            
+                            <label for="durhr" class="l2">Hr</label>
+                            <select id="durhr" name="durhr">
+                                {% for i in range(0,durhrs|length) %}
+                                <option value={{durhrs[i]}}>{{durhrs[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        
+                            <label for="durmin" class="l2">Min</label>
+                            <select id="durmin" name="durmin">
+                                {% for i in range(0,durmins|length) %}
+                                <option value={{durmins[i]}}>{{durmins[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="Date" class="l1">Date</label>
+                        </div>
+
+                        <div>
+                            <label for="month" class="l2">Month</label>
+                            <select id="month" name="month">
+                                {% for i in range(0,months|length) %}
+                                <option value={{i}}>{{months[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        
+                            <label for="date" class="l2">Day</label>
+                            <select id="date" name="date">
+                                {% for i in range(0,dates|length) %}
+                                <option value={{dates[i]}}>{{dates[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                    </div class="divs">
+                        <div>
+                            <label for="Departure" class="l1">Departure Time</label>
+                        </div>
+                        <div>
+                            <label for="dephr" class="l2">Hr</label>
+                            <select id="dephr" name="dephr">
+                                {% for i in range(0,dephrs|length) %}
+                                <option value={{dephrs[i]}}>{{dephrs[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        
+                            <label for="depmin" class="l2">Min</label>
+                            <select id="depmin" name="depmin">
+                                {% for i in range(0,depmins|length) %}
+                                <option value={{depmins[i]}}>{{depmins[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="Arrival" class="l1">Arrival Time</label>
+                        </div>
+
+                        <div>
+                            <label for="arrhr" class="l2">Hr</label>
+                            <select id="arrhr" name="arrhr">
+                                {% for i in range(0,arrhrs|length) %}
+                                <option value={{arrhrs[i]}}>{{arrhrs[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        
+                            <label for="arrmin" class="l2">Min</label>
+                            <select id="arrmin" name="arrmin">
+                                {% for i in range(0,arrmins|length) %}
+                                <option value={{arrmins[i]}}>{{arrmins[i]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    <div>
+
+                    </div>
+                        
+                    <button class="mb-3">
+                        <span>PREDICT</span>
+                    </button>
+                </form>
+
+                {% if p==1 %}
+                <div class="pre">
+                    Price :- {{pred1}} - {{pred2}}
+                </div>
+                    
+                {% endif %}
+
+                {% if p==2 %}
+                <div class="pre">
+                    Price :- {{pred1}}
+                </div>                
+                {% endif %}
+
+
+            </div>
+        </center>
+
+
+
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
